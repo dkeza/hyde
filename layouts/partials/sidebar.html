@@ -1,4 +1,4 @@
-<aside class="sidebar">
+{{/* <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <a href="{{ .Site.BaseURL }}"><h1>{{ .Site.Title }}</h1></a>
@@ -14,8 +14,57 @@
           <li><a href="{{.URL}}"> {{ .Name }} </a></li>
         {{- end }}
       </ul>
+      <li>
+        <a href="{{ .Site.Params.github }}">Github</a>
+        {{ if .Site.Params.use_icons }}
+          <a href="{{ .Site.Params.github }}"><i class="fa fa-github-square"></i></a>
+        {{ end }}
+      </li>
+      <div class="sidebar-nav-item">
+        {{ range .Site.Params.repos -}}
+          <li><a href="{{.URL}}"> {{ .Name }}</a></li>
+        {{- end }}
+      </div>
     </nav>
 
     <p>{{ with .Site.Params.copyright }}{{.}}{{ else }}&copy; {{ now.Format "2006"}}. All rights reserved. {{end}}</p>
   </div>
-</aside>
+</aside> */}}
+
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="{{ .Site.BaseURL }}"><h1>{{ .Site.Title }}</h1></a>
+      {{ with .Site.Params.description }}
+        <p class="lead">{{ . }}</p>
+      {{ end }}
+    </div>
+    <a class="sidebar-nav" href="{{ .Site.BaseURL }}/">Home</a><br/>
+    <a class="sidebar-nav" href="{{ .Site.BaseURL }}/posts">Posts</a>
+    <ul class="sidebar-nav-item">
+        {{ range .Site.Menus.main -}}
+          <li><a href="{{.URL}}"> {{ .Name }}</a></li>
+        {{- end }}
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li>
+        <a href="{{ .Site.Params.github }}">Github</a>
+        {{ if .Site.Params.use_icons }}
+          <a href="{{ .Site.Params.github }}"><i class="fa fa-github-square"></i></a>
+        {{ end }}
+      </li>
+      <div class="sidebar-nav-item">
+        {{ range .Site.Params.repos -}}
+          <li><a href="{{.URL}}"> {{ .Name }}</a></li>
+        {{- end }}
+      </div>
+    </ul>
+
+    <div class="sidebar-footer">
+      <p>Powered by <a href="http://gohugo.io/">Hugo</a> - 
+      &copy; {{ now.Format "2006"}} {{ .Site.Params.copyright }}</p>
+    </div>
+  </div>
+</div>

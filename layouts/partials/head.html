@@ -21,6 +21,11 @@
   <link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}css/hyde.css">
   {{ partial "head_fonts.html" . }}
 
+  {{ if .Site.Params.use_icons }}
+    <!-- added by galdebert to use the github icon class="fa fa-github-square" -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  {{ end }}
+  
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
   <link rel="shortcut icon" href="/favicon.png">
