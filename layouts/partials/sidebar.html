@@ -41,7 +41,7 @@
       {{ end }}
     </div>
     <a class="sidebar-nav" href="{{ .Site.BaseURL }}">Home</a><br/>
-    <a class="sidebar-nav" href="{{ .Site.BaseURL }}/posts">Posts</a>
+    <a class="sidebar-nav" href="{{ .Site.BaseURL }}posts">Posts</a>
     <ul class="sidebar-nav-item">
         {{ range .Site.Menus.main -}}
           <li><a href="{{.URL}}"> {{ .Name }}</a></li>
