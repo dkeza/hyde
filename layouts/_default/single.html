@@ -1,12 +1,40 @@
 {{ define "main" -}}
-<div class="post">
-  <h1>{{ .Title }}</h1>
-  <time datetime={{ .Date.Format "2006-01-02T15:04:05Z0700" }} class="post-date">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
-  {{ .Content }}
-</div>
 
-{{ if .Site.DisqusShortname -}}
-<h2>Comments</h2>
-{{ template "_internal/disqus.html" . }}
-{{- end }}
+  <div class="post">
+    <h1>{{ .Title }}</h1>
+    {{ if not .Params.staticpage -}}
+      <time datetime={{ .Date.Format "2006-01-02T15:04:05Z0700" }} class="post-date">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
+    {{- end }}
+    {{ .Content }}
+  </div>
+
+  {{ if .Params.contactform -}}
+    <form name="contactform" id="contactform" class="pure-form" action="https://getform.io/f/112f0ba8-8b8a-4f68-8721-018178c071f3" method="post">
+
+        <fieldset class="pure-group">
+            <input name="name" id="name" type="text" class="pure-input-1-2" placeholder="Your name" required autofocus>
+            <input name="email" id="email" type="text" class="pure-input-1-2" placeholder="Your Email Address" required>
+            <textarea name="message" id="message" class="pure-input-1-2" placeholder="Type your Message Here...." required></textarea>
+        </fieldset>
+
+        <button type="button" class="pure-button pure-input-1-2 pure-button-primary" onClick="submitForm();">Send</button>
+        <script>
+        function submitForm(){
+          document.contactform.submit();
+          document.contactform.reset(); 
+        }
+        </script>
+    </form>
+
+  {{- end }}
+
+  {{ if not .Params.staticpage -}}
+
+    {{ if .Site.DisqusShortname -}}
+      <h2>Comments</h2>
+      {{ template "_internal/disqus.html" . }}
+    {{- end }}
+
+  {{- end }}
+
 {{- end }}

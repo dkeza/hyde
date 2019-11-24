@@ -7,7 +7,7 @@
       {{ end }}
     </div>
     <a class="sidebar-nav" href="{{ .Site.BaseURL }}">Home</a><br/>
-    <a class="sidebar-nav" href="{{ .Site.BaseURL }}posts">Posts</a>
+    <a class="sidebar-nav" href="{{ .Site.BaseURL }}posts">Posts</a><br/>
     <ul class="sidebar-nav-item">
         {{ range .Site.Menus.main -}}
           <li><a href="{{.URL}}"> {{ .Name }}</a></li>
@@ -16,10 +16,22 @@
 
     <ul class="sidebar-nav">
       <li>
+        <a href="{{ .Site.BaseURL }}about">About me</a>
+      </li>
+      <li>
         <a href="{{ .Site.Params.github }}">Github</a>
         {{ if .Site.Params.use_icons }}
           <a href="{{ .Site.Params.github }}"><i class="fa fa-github-square"></i></a>
         {{ end }}
+      </li>
+      <li>
+        <a href="{{ .Site.Params.linkedin }}">LinkedIn</a>
+        {{ if .Site.Params.use_icons }}
+          <a href="{{ .Site.Params.linkedin }}"><i class="fa fa-linkedin-square"></i></a>
+        {{ end }}
+      </li>
+      <li>
+        <a href="{{ .Site.BaseURL }}contactme">Contact me</a>
       </li>
       <div class="sidebar-nav-item">
         {{ range .Site.Params.repos -}}

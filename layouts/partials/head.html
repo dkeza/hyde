@@ -3,6 +3,7 @@
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
   {{ .Hugo.Generator }}
 
   <!-- Enable responsiveness on mobile devices-->
@@ -19,6 +20,9 @@
   <link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}css/poole.css">
   <link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}css/syntax.css">
   <link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}css/hyde.css">
+  {{ if .Params.contactform -}}
+    <link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}css/pure-min.css">
+  {{- end }}
   {{ partial "head_fonts.html" . }}
 
   {{ if .Site.Params.use_icons }}
