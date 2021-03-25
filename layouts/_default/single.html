@@ -10,7 +10,6 @@
 
   {{ if .Params.contactform -}}
     <form name="contactform" id="contactform" class="pure-form" action="https://getform.io/f/112f0ba8-8b8a-4f68-8721-018178c071f3" method="post">
-
         <fieldset class="pure-group">
             <input name="name" id="name" type="text" class="pure-input-1-2" placeholder="Your name" required autofocus>
             <input name="email" id="email" type="text" class="pure-input-1-2" placeholder="Your Email Address" required>
@@ -20,10 +19,18 @@
         <button type="button" class="pure-button pure-input-1-2 pure-button-primary" onClick="submitForm();">Send</button>
         <script>
         function submitForm(){
+          var recaptcha = document.getElementById("g-recaptcha-response").value;
+          if (recaptcha === "") {
+              document.getElementById("error-message").style.display = 'block';
+              return false;
+          }
+          document.getElementById("error-message").style.display = 'none';
           document.contactform.submit();
           document.contactform.reset(); 
         }
         </script>
+        <div id="error-message" style="display:none;">Please check the recaptcha!</div>
+        <div class="g-recaptcha" data-sitekey="6Lf3nI4aAAAAAOFE4UWRi6kpzY5UPLJ3g7SO7C22"></div>
     </form>
 
   {{- end }}
